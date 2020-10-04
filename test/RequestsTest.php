@@ -333,10 +333,10 @@ class RequestsTest extends TestCase
      */
     public function it_should_produce_a_valid_subject_deletion_request(): void
     {
-        $request = Requests::deleteSubjectRequest('test');
+        $request = Requests::deleteSubjectRequest('test', false);
 
         self::assertEquals('DELETE', $request->getMethod());
-        self::assertEquals('/subjects/test', $request->getUri());
+        self::assertEquals('/subjects/test?permanent=false', $request->getUri());
         self::assertEquals([Constants::ACCEPT => [Constants::ACCEPT_HEADER[Constants::ACCEPT]]], $request->getHeaders());
     }
 
